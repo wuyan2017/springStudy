@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="car1" class="com.person.Car">
+        <property name="brand" value="BMW"/>
+        <property name="color" value="black"/>
+        <property name="price" value="2000000"/>
+    </bean>
+    <bean id="car2" class="com.person.Car">
+        <property name="brand" value="BENZ"/>
+        <property name="color" value="black"/>
+        <property name="price" value="2500000"/>
+    </bean>
+
+    <bean id="person" class="com.person.Person">
+        <property name="name" value="wuyan"></property>
+        <property name="age" value="25"></property>
+        <property name="car" ref="car2"></property>
+    </bean>
+    <bean id="person2" class="com.person.Person2">
+        <property name="name" value="wuyan"/>
+        <property name="age" value="25"/>
+        <property name="cars" >
+            <list>
+                <ref bean="car1"/>
+                <ref bean="car2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="person3" class="com.person.Person3">
+        <property name="name" value="wuyan"/>
+        <property name="age" value="24"/>
+        <property name="map">
+            <map>
+                <entry key="1" value-ref="car1"/>
+                <entry key="2" value-ref="car2"/>
+            </map>
+        </property>
+
+    </bean>
+</beans>
