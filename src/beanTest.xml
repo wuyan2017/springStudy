@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="car1" class="com.person.Car">
         <property name="brand" value="BMW"/>
         <property name="color" value="black"/>
         <property name="price" value="2000000"/>
     </bean>
-    <bean id="car2" class="com.person.Car">
+    <bean id="car2" class="com.person.Car" p:brand="BENZ" p:color="black" p:price="25000">
+        <!--
         <property name="brand" value="BENZ"/>
         <property name="color" value="black"/>
         <property name="price" value="2500000"/>
+        -->
+    </bean>
+    <bean id="car3" class="com.person.Car2" >
+        <constructor-arg index="0" value="BYD"/>
+        <constructor-arg index="1" value="red"/>
+        <constructor-arg index="2" value="200"/>
     </bean>
 
     <bean id="person" class="com.person.Person">
@@ -28,7 +36,7 @@
             </list>
         </property>
     </bean>
-    <bean id="person3" class="com.person.Person3">
+    <bean id="person3" class="com.person.Person3" scope="prototype">
         <property name="name" value="wuyan"/>
         <property name="age" value="24"/>
         <property name="map">
@@ -37,6 +45,6 @@
                 <entry key="2" value-ref="car2"/>
             </map>
         </property>
-
     </bean>
+    <bean id="person4" class="com.person.Person4" p:name="klay" p:age="20" p:car2-ref="car3"/>
 </beans>
